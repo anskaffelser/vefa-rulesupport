@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="VEFA Rule Support - https://github.com/difi/vefa-rulesupport" />
+
+    <title>{{page.identifier}} | {{title}}</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">{{title}}</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+    <h1>{{page.identifier}} <small>({{page.flagNormalized}})</small></h1>
+
+    <div class="row">
+        <div class="col-md-9">
+            <div class="well">
+                <p class="lead">{{page.message}}</p>
+            </div>
+
+            {{{page.content}}}
+
+            <div class="collapse" id="collapseTechnical">
+
+                <h2>Technical test</h2>
+
+                <dl class="dl-horizontal">
+                    <dt>Context</dt>
+                    <dd>{{page.context}}</dd>
+
+                    <dt>Test</dt>
+                    <dd>
+                        <ul>
+                            {{#page.test}}
+                                <li>{{.}}</li>
+                            {{/page.test}}
+                        </ul>
+                    </dd>
+
+                </dl>
+
+            </div>
+
+        </div>
+        <div class="col-md-3">
+            <h3>Shortcuts</h3>
+
+            <ul class="list-unstyled">
+                <li><a href="https://vefa.difi.no/">VEFA</a></li>
+                <li><a href="/validator">Validator</a></li>
+            </ul>
+
+            <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseTechnical" aria-expanded="false" aria-controls="collapseTechnical">
+                View technical test
+            </button>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+    var pkBaseURL = (("https:" == document.location.protocol) ? "https://stat.difi.no/" : "http://stat.difi.no/");
+    document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 58);
+        piwikTracker.trackPageView();
+        pageTracker._addOrganic("google.no","q");
+        pageTracker._addOrganic("abcsok.no","q");
+        pageTracker._addOrganic("verden.abcsok.no","q");
+        piwikTracker.enableLinkTracking();
+    } catch( err ) {}
+</script>
+<noscript><p><img src="https://stat.difi.no/piwik.php?idsite=58" style="border:0" alt="" /></p></noscript>
+
+</body>
+</html>
