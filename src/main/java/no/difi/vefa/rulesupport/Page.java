@@ -1,10 +1,13 @@
 package no.difi.vefa.rulesupport;
 
 import org.oclc.purl.dsdl.schematron.AssertReportType;
+import org.oclc.purl.dsdl.schematron.Name;
 import org.oclc.purl.dsdl.schematron.Rule;
+import org.oclc.purl.dsdl.schematron.ValueOf;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Page {
 
@@ -18,9 +21,22 @@ public class Page {
     public Page(Rule rule, AssertReportType assertReportType) {
         this.identifier = assertReportType.getId();
         this.flag = assertReportType.getFlag();
-        this.message = assertReportType.getContent().get(0).toString();
+        this.message = fixMessage(assertReportType.getContent());
         this.context = rule.getContext();
         this.test.add(assertReportType.getTest());
+    }
+
+    private String fixMessage(List<Object> content) {
+        return content.stream().map(o -> {
+            if (o instanceof String)
+                return (String) o;
+            else if (o instanceof Name)
+                return "[Name]";
+            else if (o instanceof ValueOf)
+                return String.format("[ValueOf: %s]", ((ValueOf) o).getSelect());
+            else
+                return o.toString();
+        }).collect(Collectors.joining(""));
     }
 
     public void addAssert(AssertReportType assertReportType) {

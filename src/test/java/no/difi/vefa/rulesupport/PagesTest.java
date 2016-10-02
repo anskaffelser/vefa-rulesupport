@@ -16,7 +16,7 @@ public class PagesTest {
         pages.load("sch/NONAT-UBL-T10.sch");
         pages.values().forEach(System.out::println);
 
-        Assert.assertEquals(pages.size(), 64);
+        Assert.assertEquals(pages.size(), 66);
         Assert.assertNotNull(pages.get("NOGOV-T10-R001").getContent());
     }
 }
